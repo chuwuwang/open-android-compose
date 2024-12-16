@@ -1,7 +1,5 @@
 package com.ktx.android.sdui
 
-import androidx.compose.ui.geometry.CornerRadius
-
 data class Component(
     val view: String,
     val id: String ? = null,
@@ -11,10 +9,11 @@ data class Component(
     val padding: Padding ? = null,
     val alignment: String ? = null,
     val background: String ? = null,
-
     val widget: Int ? = null,
     val radius: Float ? = null,
     val alpha: Float ? = null,
+    val enable: Boolean = true,
+    val action: String ? = null,
 
     val fontSize: Float ? = null,
     val fontStyle: String ? = null,
@@ -22,18 +21,14 @@ data class Component(
     val textEllipsize: String ? = null,
 
     val text: String ? = null,
-
-    val imageType: String ? = null,
-
-    val hintText: String ? = null,
-    val hintTextColor: String ? = null,
-    val inputType: String ? = null,
     val maxLines: String ? = null,
     val maxLength: String ? = null,
 
-    val action: String ? = null,
+    val inputType: String ? = null,
+    val hintText: String ? = null,
+    val hintTextColor: String ? = null,
 
-    val enable: Boolean = true,
+    val imageType: String ? = null,
 
     val props: Map<String, Any>,
     val children: List<Component>
