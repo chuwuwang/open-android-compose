@@ -1,8 +1,6 @@
-package com.ktx.android.sdui.mode
+package com.bot.nova.mode
 
-import com.ktx.android.sdui.Padding
-
-interface SDUIComponentStyle {
+interface NovaComponentStyle {
 
     val width: Int
     val height: Int
@@ -11,7 +9,7 @@ interface SDUIComponentStyle {
     val minHeight: Int ?
     val maxHeight: Int ?
 
-    val padding: Padding
+    val padding: NovaPadding
     val borderRadius: Int
     val backgroundColor: String
 

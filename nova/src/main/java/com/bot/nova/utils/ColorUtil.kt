@@ -1,4 +1,4 @@
-package com.ktx.android.utils
+package com.bot.nova.utils
 
 import androidx.compose.ui.graphics.Color
 

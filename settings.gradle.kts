@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "open-android-compose"
 include(":app")
- 
+include(":nova")

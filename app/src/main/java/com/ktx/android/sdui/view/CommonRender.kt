@@ -14,12 +14,12 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.ktx.android.sdui.mode.SDUIComponentStyle
-import com.ktx.android.utils.ColorUtil
+import com.bot.nova.mode.NovaComponentStyle
+import com.bot.nova.utils.ColorUtil
 
-fun getModifier(style: SDUIComponentStyle): Modifier {
+fun getModifier(style: com.bot.nova.mode.NovaComponentStyle): Modifier {
     val shape = RoundedCornerShape(style.borderRadius.dp)
-    val backgroundColor = ColorUtil.parseColor(style.backgroundColor)
+    val backgroundColor = com.bot.nova.utils.ColorUtil.parseColor(style.backgroundColor)
     val modifier = Modifier
         .width(style.width.dp)
         .height(style.height.dp)

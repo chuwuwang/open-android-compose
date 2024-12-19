@@ -12,8 +12,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.google.gson.Gson
-import com.ktx.android.sdui.mode.TextComponent
-import com.ktx.android.sdui.view.TextRender
+import com.bot.nova.text.TextComponent
+import com.ktx.android.nova.text.TextRender
 import com.ktx.android.ui.theme.OpenandroidcomposeTheme
 
 class MainActivity : ComponentActivity() {
@@ -72,7 +72,7 @@ fun Render(modifier: Modifier) {
     ]
 }
 """.trimIndent()
-    val component = Gson().fromJson(serverJson, TextComponent::class.java)
+    val component = Gson().fromJson(serverJson, com.bot.nova.text.TextComponent::class.java)
     Log.d("MainActivity", "component: $component")
     TextRender(component = component, text = component.text)
 }

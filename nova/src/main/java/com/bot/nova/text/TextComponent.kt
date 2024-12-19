@@ -1,6 +1,8 @@
-package com.ktx.android.sdui.mode
+package com.bot.nova.text
 
-import com.ktx.android.sdui.Padding
+import com.bot.nova.action.NovaAction
+import com.bot.nova.mode.NovaComponentStyle
+import com.bot.nova.mode.NovaPadding
 
 data class TextComponent(
     override val id: String,
@@ -8,8 +10,8 @@ data class TextComponent(
 
     val text: String,
     val style: TextComponentStyle,
-    val actions: List<SDUIAction> ? = null,
-) : SDUIComponent
+    val actions: List<NovaAction> ? = null,
+) : com.bot.nova.mode.NovaComponent
 
 data class TextComponentStyle(
     override val width: Int,
@@ -18,7 +20,7 @@ data class TextComponentStyle(
     override val maxWidth: Int ? = null,
     override val minHeight: Int ? = null,
     override val maxHeight: Int ? = null,
-    override val padding: Padding,
+    override val padding: NovaPadding,
     override val borderRadius: Int,
     override val backgroundColor: String,
 
@@ -26,4 +28,4 @@ data class TextComponentStyle(
     val color: String,
     val textAlign: String,
     val lineLimit: Int ? = null,
-) : SDUIComponentStyle
+) : NovaComponentStyle
