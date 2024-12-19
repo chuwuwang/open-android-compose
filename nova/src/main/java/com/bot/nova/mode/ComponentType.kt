@@ -1,6 +1,6 @@
 package com.bot.nova.mode
 
-enum class ComponentType(type: String) {
+enum class ComponentType(val type: String) {
 
     TEXT("text"),
     INPUT("input"),

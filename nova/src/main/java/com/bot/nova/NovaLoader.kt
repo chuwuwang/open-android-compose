@@ -1,21 +1,37 @@
 package com.bot.nova
 
 import androidx.compose.runtime.Composable
+import com.bot.nova.component.text.TextComponent
+import com.bot.nova.component.text.TextComponentViewModel
+import com.bot.nova.mode.ComponentType
 import com.bot.nova.mode.NovaComponent
 
-object NovaLoader {
+class NovaLoader {
 
-
+    private val mapsViewModel = HashMap<String, BaseComponentViewModel>()
 
     @Composable
     fun Render(components: List<NovaComponent>) {
         for (component in components) {
-            val type = component.type
-            if (type == "text") {
-                val textComponent = component as com.bot.nova.text.TextComponent
-                com.bot.nova.component.text.TextRender(textComponent, textComponent.text)
-            }
+            Render(component)
         }
+    }
+
+    @Composable
+    fun Render(component: NovaComponent) {
+        val type = ComponentType.valueOf(component.type)
+        if (type == ComponentType.TEXT) {
+            val textComponent = component as TextComponent
+            val viewModel = TextComponentViewModel(textComponent)
+            viewModel.Render()
+            mapsViewModel[textComponent.id] = viewModel
+        } else if (type == ComponentType.BUTTON) {
+
+        }
+    }
+
+    fun xxx(component: NovaComponent, action: OnErrorAction) {
+        val viewModel = mapsViewModel["id"]
     }
 
 }

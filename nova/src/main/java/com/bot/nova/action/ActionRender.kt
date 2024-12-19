@@ -7,22 +7,22 @@ import androidx.compose.ui.input.pointer.pointerInput
 
 fun Modifier.actions(
     onClick: Click ? ,
-    onLongClick: Click ? ,
+    onLongPressClick: Click ? ,
     actions: List<NovaAction> ? ,
 ): Modifier {
     var onClickUi: Click ? = null
-    var onLongClickUi: Click ? = null
+    var onLongPressClickUi: Click ? = null
     if (actions != null) {
         val onClickX = actions.find { it.event == "onClick" }
         val onLongPressX = actions.find { it.event == "onLongPress" }
         if (onClickX != null) onClickUi = {
             Log.e("Action", "onClickUi")
         }
-        if (onLongPressX != null) onLongClickUi = {
+        if (onLongPressX != null) onLongPressClickUi = {
             Log.e("Action", "onLongClickUi")
         }
     }
-    if (onClick == null && onLongClick == null && onClickUi == null && onLongClickUi == null) {
+    if (onClick == null && onLongPressClick == null && onClickUi == null && onLongPressClickUi == null) {
         return this
     }
     return this then pointerInput(Unit) {
@@ -32,8 +32,8 @@ fun Modifier.actions(
                 if (onClick != null) onClick()
             },
             onLongPress = {
-                if (onLongClickUi != null) onLongClickUi()
-                if (onLongClick != null) onLongClick()
+                if (onLongPressClickUi != null) onLongPressClickUi()
+                if (onLongPressClick != null) onLongPressClick()
             }
         )
     }

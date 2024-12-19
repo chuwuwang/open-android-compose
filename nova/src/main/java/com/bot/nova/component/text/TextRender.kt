@@ -19,11 +19,11 @@ internal fun TextRender(component: TextComponent, text: String, onClick: () -> U
 }
 
 @Composable
-internal fun TextRender(component: TextComponent, text: String, onClick: Click ? = null, onLongClick: Click ? = null) {
+internal fun TextRender(component: TextComponent, text: String, onClick: Click ? = null, onLongPressClick: Click ? = null) {
     val style = component.style
     val modifier = getModifier(style).actions(
         onClick = onClick,
-        onLongClick = onLongClick,
+        onLongClick = onLongPressClick,
         actions = component.actions
     )
     val textFont = getTextFont(style.font)
