@@ -1,10 +1,16 @@
 package com.bot.nova
 
+import androidx.compose.runtime.Composable
 import com.bot.nova.mode.NovaComponent
 
-abstract class BaseComponentViewModel {
+abstract class BaseComponentViewModel(private var component: NovaComponent) {
 
+    @Composable
+    abstract fun Render()
 
-    abstract fun update(component: NovaComponent)
+    @Composable
+    fun Update() {
+
+    }
 
 }

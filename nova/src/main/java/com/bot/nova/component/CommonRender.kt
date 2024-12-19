@@ -15,6 +15,7 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bot.nova.mode.NovaComponentStyle
+import com.bot.nova.mode.TextAlignment
 
 fun getModifier(style: NovaComponentStyle): Modifier {
     val shape = RoundedCornerShape(style.borderRadius.dp)
@@ -50,9 +51,9 @@ fun getModifier(style: NovaComponentStyle): Modifier {
 }
 
 fun getTextAlign(align: String): TextAlign {
-    if (align == "center") {
+    if (align == TextAlignment.CENTER.alignment) {
         return TextAlign.Center
-    } else if (align == "right") {
+    } else if (align == TextAlignment.END.alignment) {
         return TextAlign.End
     }
     return TextAlign.Start

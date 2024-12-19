@@ -1,12 +1,13 @@
 package com.bot.nova.component.text
 
+import androidx.compose.runtime.Composable
 import com.bot.nova.BaseComponentViewModel
-import com.bot.nova.mode.NovaComponent
 
-class TextComponentViewModel : BaseComponentViewModel() {
+class TextComponentViewModel(private var component: TextComponent) : BaseComponentViewModel(component) {
 
-    override fun update(component: NovaComponent) {
-
+    @Composable
+    override fun Render() {
+        TextRender(component, component.text)
     }
 
 }

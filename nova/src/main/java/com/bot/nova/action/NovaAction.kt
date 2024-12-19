@@ -4,3 +4,5 @@ data class NovaAction(
     val event: String,
     val target: String,
 )
+
+internal typealias Click = () -> Unit

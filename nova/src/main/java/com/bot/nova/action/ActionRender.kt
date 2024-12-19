@@ -4,17 +4,14 @@ import android.util.Log
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.pointer.pointerInput
-import com.ktx.android.sdui.mode.SDUIAction
-
-internal typealias Click = () -> Unit
 
 fun Modifier.actions(
-    onClick: Click?,
-    onLongClick: Click?,
-    actions: List<SDUIAction> ?,
+    onClick: Click ? ,
+    onLongClick: Click ? ,
+    actions: List<NovaAction> ? ,
 ): Modifier {
-    var onClickUi: Click? = null
-    var onLongClickUi: Click? = null
+    var onClickUi: Click ? = null
+    var onLongClickUi: Click ? = null
     if (actions != null) {
         val onClickX = actions.find { it.event == "onClick" }
         val onLongPressX = actions.find { it.event == "onLongPress" }

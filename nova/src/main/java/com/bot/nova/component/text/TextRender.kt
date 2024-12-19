@@ -2,25 +2,24 @@ package com.bot.nova.component.text
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
+import com.bot.nova.action.Click
+import com.bot.nova.action.actions
 import com.bot.nova.component.getModifier
 import com.bot.nova.component.getTextAlign
 import com.bot.nova.component.getTextFont
-import com.ktx.android.sdui.view.Click
-import com.ktx.android.sdui.view.actions
 
 @Composable
-internal fun TextRender(component: com.bot.nova.text.TextComponent, text: String) {
+internal fun TextRender(component: TextComponent, text: String) {
     TextRender(component = component, text = text, null, null)
 }
 
 @Composable
-internal fun TextRender(component: com.bot.nova.text.TextComponent, text: String, onClick: () -> Unit) {
+internal fun TextRender(component: TextComponent, text: String, onClick: () -> Unit) {
     TextRender(component = component, text = text, onClick, null)
 }
 
 @Composable
-internal fun TextRender(component: com.bot.nova.text.TextComponent, text: String, onClick: Click? = null, onLongClick: Click? = null) {
+internal fun TextRender(component: TextComponent, text: String, onClick: Click ? = null, onLongClick: Click ? = null) {
     val style = component.style
     val modifier = getModifier(style).actions(
         onClick = onClick,
@@ -34,5 +33,5 @@ internal fun TextRender(component: com.bot.nova.text.TextComponent, text: String
     if (style.lineLimit != null && style.lineLimit != 0) {
         maxLines = style.lineLimit
     }
-    Text(text = text, modifier = modifier, color = Color(0xFF000000), fontSize = textFont.first, fontFamily = textFont.second, textAlign = textAlign, maxLines = maxLines)
+    Text(text = text, modifier = modifier, color = color, fontSize = textFont.first, fontFamily = textFont.second, textAlign = textAlign, maxLines = maxLines)
 }
