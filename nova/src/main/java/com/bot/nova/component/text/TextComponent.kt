@@ -1,4 +1,4 @@
-package com.bot.nova.text
+package com.bot.nova.component.text
 
 import com.bot.nova.action.NovaAction
 import com.bot.nova.mode.NovaComponentStyle

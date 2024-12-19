@@ -1,14 +1,13 @@
-package com.ktx.android.nova.text
+package com.bot.nova.component.text
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
+import com.bot.nova.component.getModifier
+import com.bot.nova.component.getTextAlign
+import com.bot.nova.component.getTextFont
 import com.ktx.android.sdui.view.Click
 import com.ktx.android.sdui.view.actions
-import com.ktx.android.sdui.view.getModifier
-import com.ktx.android.sdui.view.getTextAlign
-import com.ktx.android.sdui.view.getTextFont
-import com.bot.nova.utils.ColorUtil
 
 @Composable
 internal fun TextRender(component: com.bot.nova.text.TextComponent, text: String) {

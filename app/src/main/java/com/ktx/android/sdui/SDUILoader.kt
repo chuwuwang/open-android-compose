@@ -3,7 +3,7 @@ package com.ktx.android.sdui
 import androidx.compose.runtime.Composable
 import com.bot.nova.mode.NovaComponent
 import com.bot.nova.text.TextComponent
-import com.ktx.android.nova.text.TextRender
+import com.bot.nova.component.text.TextRender
 
 object SDUILoader {
 
@@ -21,7 +21,7 @@ fun Render(components: List<com.bot.nova.mode.NovaComponent>) {
         val type = component.type
         if (type == "text") {
             val textComponent = component as com.bot.nova.text.TextComponent
-            TextRender(textComponent, textComponent.text)
+            com.bot.nova.component.text.TextRender(textComponent, textComponent.text)
         }
     }
 }

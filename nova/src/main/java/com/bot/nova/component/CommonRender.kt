@@ -1,4 +1,4 @@
-package com.ktx.android.sdui.view
+package com.bot.nova.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.defaultMinSize
@@ -15,21 +15,16 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bot.nova.mode.NovaComponentStyle
-import com.bot.nova.utils.ColorUtil
 
-fun getModifier(style: com.bot.nova.mode.NovaComponentStyle): Modifier {
+fun getModifier(style: NovaComponentStyle): Modifier {
     val shape = RoundedCornerShape(style.borderRadius.dp)
     val backgroundColor = com.bot.nova.utils.ColorUtil.parseColor(style.backgroundColor)
-    val modifier = Modifier
-        .width(style.width.dp)
-        .height(style.height.dp)
-        .padding(
-            top = style.padding.top.dp,
-            start = style.padding.left.dp,
-            end = style.padding.right.dp,
-            bottom = style.padding.bottom.dp
-        )
-        .background(color = backgroundColor, shape = shape)
+    val modifier = Modifier.width(style.width.dp).height(style.height.dp).padding(
+        top = style.padding.top.dp,
+        start = style.padding.left.dp,
+        end = style.padding.right.dp,
+        bottom = style.padding.bottom.dp
+    ).background(color = backgroundColor, shape = shape)
     val maxWidth = style.maxWidth
     val maxHeight = style.maxHeight
     if (maxWidth != null) {
