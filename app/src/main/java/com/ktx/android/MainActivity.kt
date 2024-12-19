@@ -1,47 +1,78 @@
 package com.ktx.android
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.google.gson.Gson
+import com.ktx.android.sdui.mode.TextComponent
+import com.ktx.android.sdui.view.TextRender
 import com.ktx.android.ui.theme.OpenandroidcomposeTheme
 
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             OpenandroidcomposeTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                    Render(Modifier.padding(innerPadding))
                 }
             }
         }
     }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
 }
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
-    OpenandroidcomposeTheme {
-        Greeting("Android")
-    }
+fun Render(modifier: Modifier) {
+    val serverJson = """
+{
+    "type": "text",
+    "id": "welcomeText",
+    "text": "Hello world",
+    "style": {
+        "width": 200,
+        "height": 100,
+        "font": "normal-1",
+        "color": "#000000",
+        "backgroundColor": "#FFFFFF",
+        "textAlign": "center",
+        "borderRadius": 8,
+        "minWidth": null,
+        "maxWidth": null,
+        "minHeight": null,
+        "maxHeight": null,
+        "lineLimit": 3,
+        "padding": {
+            "top": 10,
+            "bottom": 10,
+            "left": 15,
+            "right": 15
+        }
+    },
+    "actions": [
+        {
+            "event": "onClick",
+            "target": "function://route?url=xxxxx"
+        },
+        {
+            "event": "onLongPress",
+            "target": "function://customAction?param=yyyyy"
+        }
+    ]
+}
+""".trimIndent()
+    val component = Gson().fromJson(serverJson, TextComponent::class.java)
+    Log.d("MainActivity", "component: $component")
+    TextRender(component = component, text = component.text)
 }

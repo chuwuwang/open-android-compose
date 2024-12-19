@@ -4,7 +4,7 @@ import com.ktx.android.sdui.Padding
 
 interface SDUIComponentStyle {
 
-    val with: Int
+    val width: Int
     val height: Int
     val minWidth: Int ?
     val maxWidth: Int ?

@@ -1,7 +1,6 @@
 package com.ktx.android.sdui.view
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -9,39 +8,20 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.ktx.android.sdui.mode.SDUIAction
 import com.ktx.android.sdui.mode.SDUIComponentStyle
 import com.ktx.android.utils.ColorUtil
-
-fun Modifier.actions(
-    onClick: (() -> Unit) ? ,
-    onLongClick: (() -> Unit) ? ,
-    actions: List<SDUIAction> ? ,
-): Modifier {
-    return this then pointerInput(Unit) {
-        detectTapGestures(
-            onTap = {
-                if (onClick != null) onClick()
-            },
-            onPress = {
-                if (onLongClick != null) onLongClick()
-            }
-        )
-    }
-}
 
 fun getModifier(style: SDUIComponentStyle): Modifier {
     val shape = RoundedCornerShape(style.borderRadius.dp)
     val backgroundColor = ColorUtil.parseColor(style.backgroundColor)
     val modifier = Modifier
-        .width(style.with.dp)
+        .width(style.width.dp)
         .height(style.height.dp)
         .padding(
             top = style.padding.top.dp,

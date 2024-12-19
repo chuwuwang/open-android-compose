@@ -12,7 +12,7 @@ data class TextComponent(
 ) : SDUIComponent
 
 data class TextComponentStyle(
-    override val with: Int,
+    override val width: Int,
     override val height: Int,
     override val minWidth: Int ? = null,
     override val maxWidth: Int ? = null,
