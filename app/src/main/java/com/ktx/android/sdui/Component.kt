@@ -9,7 +9,8 @@ data class Component(
     val padding: Padding ? = null,
     val alignment: String ? = null,
     val background: String ? = null,
-    val widget: Int ? = null,
+    // val widget: Int ? = null,
+    // val totalWidget: Int ? = null,
     val radius: Float ? = null,
     val alpha: Float ? = null,
     val enable: Boolean = true,
@@ -28,9 +29,10 @@ data class Component(
     val hintText: String ? = null,
     val hintTextColor: String ? = null,
 
-    val imageType: String ? = null,
+    // val imageType: String ? = null,
 
-    val props: Map<String, Any>,
+    // val props: Map<String, Any>,
+
     val children: List<Component>
 )
 
