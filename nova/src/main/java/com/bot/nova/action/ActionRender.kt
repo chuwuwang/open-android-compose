@@ -1,9 +1,9 @@
 package com.bot.nova.action
 
-import android.util.Log
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.pointer.pointerInput
+import com.bot.nova.utils.info
 
 fun Modifier.actions(
     onClick: Click ? ,
@@ -16,10 +16,10 @@ fun Modifier.actions(
         val onClickX = actions.find { it.event == "onClick" }
         val onLongPressX = actions.find { it.event == "onLongPress" }
         if (onClickX != null) onClickUi = {
-            Log.e("Action", "onClickUi")
+            info("onClickUi")
         }
         if (onLongPressX != null) onLongPressClickUi = {
-            Log.e("Action", "onLongClickUi")
+            info("onLongPressClickUi")
         }
     }
     if (onClick == null && onLongPressClick == null && onClickUi == null && onLongPressClickUi == null) {

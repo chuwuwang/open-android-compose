@@ -7,7 +7,7 @@ android {
     namespace = "com.bot.nova"
     compileSdk = 34
     defaultConfig {
-        minSdk = 26
+        minSdk = 24
         consumerProguardFiles("consumer-rules.pro")
     }
     buildTypes {

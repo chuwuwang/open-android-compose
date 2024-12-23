@@ -1,0 +1,35 @@
+{
+  "type": "text",
+  "id": "welcomeText",
+  "text": "Hello world",
+  "style": {
+    "width": 200,
+    "height": 100,
+    "font": "normal-1",
+    "color": "#000000",
+    "backgroundColor": "#FFFFFF",
+    "textAlign": "center",
+    "borderRadius": 8,
+    "minWidth": null,
+    "maxWidth": null,
+    "minHeight": null,
+    "maxHeight": null,
+    "lineLimit": 3,
+    "padding": {
+      "top": 10,
+      "bottom": 10,
+      "left": 15,
+      "right": 15
+    }
+  },
+  "actions": [
+    {
+      "event": "onClick",
+      "target": "function://route?url=xxxxx"
+    },
+    {
+      "event": "onLongPress",
+      "target": "function://customAction?param=yyyyy"
+    }
+  ]
+}

@@ -5,4 +5,4 @@ data class NovaAction(
     val target: String,
 )
 
-internal typealias Click = () -> Unit
+typealias Click = () -> Unit

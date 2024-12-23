@@ -8,7 +8,7 @@ import com.bot.nova.mode.NovaComponent
 
 class NovaLoader {
 
-    private val mapsViewModel = HashMap<String, BaseComponentViewModel>()
+    private val viewModels = HashMap<String, BaseComponentViewModel>()
 
     @Composable
     fun Render(components: List<NovaComponent>) {
@@ -19,19 +19,19 @@ class NovaLoader {
 
     @Composable
     fun Render(component: NovaComponent) {
-        val type = ComponentType.valueOf(component.type)
-        if (type == ComponentType.TEXT) {
+        val type = component.type
+        if (type == ComponentType.TEXT.value) {
             val textComponent = component as TextComponent
             val viewModel = TextComponentViewModel(textComponent)
             viewModel.Render()
-            mapsViewModel[textComponent.id] = viewModel
-        } else if (type == ComponentType.BUTTON) {
+            viewModels[textComponent.id] = viewModel
+        } else if (type == ComponentType.BUTTON.value) {
 
         }
     }
 
     fun xxx(component: NovaComponent, action: OnErrorAction) {
-        val viewModel = mapsViewModel["id"]
+        val viewModel = viewModels["id"]
     }
 
 }

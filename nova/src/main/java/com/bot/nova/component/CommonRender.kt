@@ -17,13 +17,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bot.nova.mode.NovaComponentStyle
 import com.bot.nova.mode.TextAlignment
+import com.bot.nova.utils.ColorUtil
 
 private const val FULL_WIDTH = -1
 private const val FULL_HEIGHT = -1
 
 fun getModifier(style: NovaComponentStyle): Modifier {
     val shape = RoundedCornerShape(style.borderRadius.dp)
-    val backgroundColor = com.bot.nova.utils.ColorUtil.parseColor(style.backgroundColor)
+    val backgroundColor = ColorUtil.parseColor(style.backgroundColor)
     val modifier = Modifier.width(style.width.dp)
         .height(style.height.dp)
         .padding(
@@ -66,10 +67,9 @@ fun getModifier(style: NovaComponentStyle): Modifier {
 }
 
 fun getTextAlign(align: String): TextAlign {
-    val alignment = TextAlignment.valueOf(align)
-    if (alignment == TextAlignment.CENTER) {
+    if (align == TextAlignment.CENTER.value) {
         return TextAlign.Center
-    } else if (alignment == TextAlignment.END) {
+    } else if (align == TextAlignment.END.value) {
         return TextAlign.End
     }
     return TextAlign.Start
