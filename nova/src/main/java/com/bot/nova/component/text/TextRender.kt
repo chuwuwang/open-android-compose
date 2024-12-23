@@ -10,17 +10,7 @@ import com.bot.nova.component.getTextFont
 import com.bot.nova.utils.ColorUtil
 
 @Composable
-fun TextRender(component: TextComponent, text: String) {
-    TextRender(component = component, text = text, null, null)
-}
-
-@Composable
-fun TextRender(component: TextComponent, text: String, onClick: () -> Unit) {
-    TextRender(component = component, text = text, onClick, null)
-}
-
-@Composable
-fun TextRender(component: TextComponent, text: String, onClick: Click ? = null, onLongPressClick: Click ? = null) {
+fun NovaTextRender(component: TextComponent, text: String, onClick: Click ? = null, onLongPressClick: Click ? = null) {
     val style = component.style
     val modifier = getModifier(style).actions(
         onClick = onClick,

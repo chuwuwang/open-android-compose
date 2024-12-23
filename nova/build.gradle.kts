@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.compose)
 }
 
 android {
@@ -18,21 +19,27 @@ android {
             )
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+    buildFeatures {
+        compose = true
     }
     kotlinOptions {
         jvmTarget = "11"
     }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
 }
 
 dependencies {
-    implementation(libs.androidx.ui)
-    implementation(libs.androidx.ui.graphics)
-    implementation(libs.androidx.material3)
+    api(libs.androidx.core.ktx)
+    api(libs.androidx.lifecycle.runtime.ktx)
 
-    implementation(libs.androidx.activity.compose)
-    implementation(libs.androidx.ui.tooling.preview)
-    implementation( platform(libs.androidx.compose.bom) )
+    api(libs.androidx.material3)
+
+    api(libs.androidx.ui)
+    api(libs.androidx.ui.graphics)
+    api(libs.androidx.activity.compose)
+    api(libs.androidx.ui.tooling.preview)
+    api( platform(libs.androidx.compose.bom) )
 }

@@ -2,16 +2,13 @@ package com.bot.nova.component.button
 
 import androidx.compose.runtime.Composable
 import com.bot.nova.BaseComponentViewModel
-import com.bot.nova.utils.info
+import com.bot.nova.action.NovaEvent
 
-class ButtonComponentViewModel(private var component: ButtonComponent) :
-    BaseComponentViewModel(component) {
+class ButtonComponentViewModel(private var component: ButtonComponent) : BaseComponentViewModel(component) {
 
     @Composable
-    override fun Render() {
-        ButtonRender(component, component.text) {
-            info("Button clicked")
-        }
+    override fun SetEvent(event: NovaEvent) {
+
     }
 
 }

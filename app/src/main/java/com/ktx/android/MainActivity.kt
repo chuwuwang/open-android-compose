@@ -20,7 +20,7 @@ import com.ktx.android.ui.theme.OpenandroidcomposeTheme
 
 class MainActivity : ComponentActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle ? ) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
@@ -28,7 +28,7 @@ class MainActivity : ComponentActivity() {
                 var modifier = Modifier.fillMaxSize()
                 Scaffold(modifier) { innerPadding ->
                     modifier = Modifier.padding(innerPadding)
-                    Render(modifier)
+                    Root(modifier)
                 }
             }
         }
@@ -38,7 +38,7 @@ class MainActivity : ComponentActivity() {
 
 @Preview
 @Composable
-fun Render(modifier: Modifier) {
+fun Root(modifier: Modifier) {
     val json = loadAssetString(LocalContext.current, "text_component.json").trimIndent()
     val component = Gson().fromJson(json, TextComponent::class.java)
     info("component: $component")

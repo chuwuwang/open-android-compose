@@ -7,10 +7,7 @@ import com.bot.nova.mode.NovaComponent
 abstract class BaseComponentViewModel(private var component: NovaComponent) {
 
     @Composable
-    abstract fun Render()
-
-    @Composable
-    open fun SetEvent(component: NovaComponent, event: NovaEvent) {
+    open fun SetEvent(event: NovaEvent) {
 
     }
 

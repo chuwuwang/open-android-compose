@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
@@ -22,6 +23,7 @@ import com.bot.nova.utils.ColorUtil
 private const val FULL_WIDTH = -1
 private const val FULL_HEIGHT = -1
 
+@Composable
 fun getModifier(style: NovaComponentStyle): Modifier {
     val shape = RoundedCornerShape(style.borderRadius.dp)
     val backgroundColor = ColorUtil.parseColor(style.backgroundColor)
