@@ -1,5 +1,6 @@
-package com.bot.nova.component.text
+package com.bot.nova.component.button
 
+import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import com.bot.nova.action.Click
@@ -10,17 +11,12 @@ import com.bot.nova.component.getTextFont
 import com.bot.nova.utils.ColorUtil
 
 @Composable
-fun TextRender(component: TextComponent, text: String) {
-    TextRender(component = component, text = text, null, null)
+fun ButtonRender(component: ButtonComponent, text: String, onClick: () -> Unit) {
+    ButtonRender(component = component, text = text, onClick, null)
 }
 
 @Composable
-fun TextRender(component: TextComponent, text: String, onClick: () -> Unit) {
-    TextRender(component = component, text = text, onClick, null)
-}
-
-@Composable
-fun TextRender(component: TextComponent, text: String, onClick: Click ? = null, onLongPressClick: Click ? = null) {
+fun ButtonRender(component: ButtonComponent, text: String, onClick: Click, onLongPressClick: Click ? = null) {
     val style = component.style
     val modifier = getModifier(style).actions(
         onClick = onClick,
@@ -34,5 +30,7 @@ fun TextRender(component: TextComponent, text: String, onClick: Click ? = null, 
     if (style.lineLimit != null && style.lineLimit > 0) {
         maxLines = style.lineLimit
     }
-    Text(text = text, modifier = modifier, color = color, fontSize = textFont.first, fontFamily = textFont.second, textAlign = textAlign, maxLines = maxLines)
+    Button(onClick = onClick, modifier = modifier) {
+        Text(text = text, modifier = modifier, color = color, fontSize = textFont.first, fontFamily = textFont.second, textAlign = textAlign, maxLines = maxLines)
+    }
 }

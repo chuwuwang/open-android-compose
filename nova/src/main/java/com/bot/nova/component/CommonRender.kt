@@ -2,6 +2,7 @@ package com.bot.nova.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.defaultMinSize
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -17,33 +18,47 @@ import androidx.compose.ui.unit.sp
 import com.bot.nova.mode.NovaComponentStyle
 import com.bot.nova.mode.TextAlignment
 
+private const val FULL_WIDTH = -1
+private const val FULL_HEIGHT = -1
+
 fun getModifier(style: NovaComponentStyle): Modifier {
     val shape = RoundedCornerShape(style.borderRadius.dp)
     val backgroundColor = com.bot.nova.utils.ColorUtil.parseColor(style.backgroundColor)
-    val modifier = Modifier.width(style.width.dp).height(style.height.dp).padding(
-        top = style.padding.top.dp,
-        start = style.padding.left.dp,
-        end = style.padding.right.dp,
-        bottom = style.padding.bottom.dp
-    ).background(color = backgroundColor, shape = shape)
+    val modifier = Modifier.width(style.width.dp)
+        .height(style.height.dp)
+        .padding(
+            top = style.padding.top.dp,
+            start = style.padding.left.dp,
+            end = style.padding.right.dp,
+            bottom = style.padding.bottom.dp
+        )
+        .background(color = backgroundColor, shape = shape)
     val maxWidth = style.maxWidth
     val maxHeight = style.maxHeight
     if (maxWidth != null) {
-        val width = maxWidth.toFloat()
-        modifier.fillMaxWidth(width)
+        if (maxWidth == FULL_WIDTH) {
+            modifier.fillMaxWidth()
+        } else if (maxWidth > 0) {
+            val width = maxWidth.toFloat()
+            modifier.fillMaxWidth(width)
+        }
     }
     if (maxHeight != null) {
-        val height = maxHeight.toFloat()
-        modifier.fillMaxWidth(height)
+        if (maxHeight == FULL_HEIGHT) {
+            modifier.fillMaxHeight()
+        } else if (maxHeight > 0) {
+            val height = maxHeight.toFloat()
+            modifier.fillMaxWidth(height)
+        }
     }
     var mWidth = Dp.Unspecified
     var mHeight = Dp.Unspecified
     val minWidth = style.minWidth
     val minHeight = style.minHeight
-    if (minWidth != null) {
+    if (minWidth != null && minWidth > 0) {
         mWidth = minWidth.dp
     }
-    if (minHeight != null) {
+    if (minHeight != null && minHeight > 0) {
         mHeight = minHeight.dp
     }
     modifier.defaultMinSize(minWidth = mWidth, minHeight = mHeight)
@@ -51,9 +66,10 @@ fun getModifier(style: NovaComponentStyle): Modifier {
 }
 
 fun getTextAlign(align: String): TextAlign {
-    if (align == TextAlignment.CENTER.alignment) {
+    val alignment = TextAlignment.valueOf(align)
+    if (alignment == TextAlignment.CENTER) {
         return TextAlign.Center
-    } else if (align == TextAlignment.END.alignment) {
+    } else if (alignment == TextAlignment.END) {
         return TextAlign.End
     }
     return TextAlign.Start

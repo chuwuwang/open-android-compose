@@ -1,20 +1,20 @@
-package com.bot.nova.component.text
+package com.bot.nova.component.button
 
 import com.bot.nova.action.NovaAction
 import com.bot.nova.mode.NovaComponent
 import com.bot.nova.mode.NovaComponentStyle
 import com.bot.nova.mode.NovaPadding
 
-data class TextComponent(
+data class ButtonComponent(
     override val id: String,
     override val type: String,
 
-    val text: String,
-    val style: TextComponentStyle,
+    var text: String,
+    val style: ButtonComponentStyle,
     val actions: List<NovaAction> ? = null,
 ) : NovaComponent
 
-data class TextComponentStyle(
+data class ButtonComponentStyle(
     override val width: Int,
     override val height: Int,
     override val minWidth: Int ? = null,
