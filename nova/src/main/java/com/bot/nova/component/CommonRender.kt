@@ -1,6 +1,7 @@
 package com.bot.nova.component
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -27,15 +28,20 @@ private const val FULL_HEIGHT = -1
 fun getModifier(style: NovaComponentStyle): Modifier {
     val shape = RoundedCornerShape(style.borderRadius.dp)
     val backgroundColor = ColorUtil.parseColor(style.backgroundColor)
-    val modifier = Modifier.width(style.width.dp)
-        .height(style.height.dp)
+    val modifier = Modifier
         .padding(
             top = style.padding.top.dp,
-            start = style.padding.left.dp,
-            end = style.padding.right.dp,
+            start = style.padding.start.dp,
+            end = style.padding.end.dp,
             bottom = style.padding.bottom.dp
         )
         .background(color = backgroundColor, shape = shape)
+    if (style.width > 0) {
+        modifier.width(style.width.dp)
+    }
+    if (style.height > 0) {
+        modifier.height(style.height.dp)
+    }
     val maxWidth = style.maxWidth
     val maxHeight = style.maxHeight
     if (maxWidth != null) {
@@ -66,6 +72,15 @@ fun getModifier(style: NovaComponentStyle): Modifier {
     }
     modifier.defaultMinSize(minWidth = mWidth, minHeight = mHeight)
     return modifier
+}
+
+fun getHorizontalAlignment(alignment: String): Arrangement.Horizontal {
+    if ("center" == alignment) {
+        return Arrangement.Center
+    } else if ("trailing" == alignment) {
+        return Arrangement.End
+    }
+    return Arrangement.Start
 }
 
 fun getTextAlign(align: String): TextAlign {

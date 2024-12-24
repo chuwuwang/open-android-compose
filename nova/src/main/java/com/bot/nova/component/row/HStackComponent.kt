@@ -1,20 +1,22 @@
-package com.bot.nova.component.text
+package com.bot.nova.component.row
 
 import com.bot.nova.action.NovaAction
+import com.bot.nova.component.button.ButtonComponentStyle
 import com.bot.nova.mode.NovaComponent
 import com.bot.nova.mode.NovaComponentStyle
 import com.bot.nova.mode.NovaPadding
 
-data class TextComponent(
+data class HStackComponent(
     override val id: String,
     override val type: String,
 
-    val text: String,
-    val style: TextComponentStyle,
+    var alignment: String,
+    val style: ButtonComponentStyle,
     val actions: List<NovaAction> ? = null,
+    val children: List<NovaComponent> = emptyList(),
 ) : NovaComponent
 
-data class TextComponentStyle(
+data class HStackComponentStyle(
     override val width: Int,
     override val height: Int,
     override val minWidth: Int ? = null,
@@ -24,9 +26,4 @@ data class TextComponentStyle(
     override val padding: NovaPadding,
     override val borderRadius: Int,
     override val backgroundColor: String,
-
-    val font: String,
-    val color: String,
-    val textAlign: String,
-    val lineLimit: Int ? = null,
 ) : NovaComponentStyle

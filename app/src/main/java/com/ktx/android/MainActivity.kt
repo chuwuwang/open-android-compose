@@ -12,10 +12,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
-import com.bot.nova.NovaLoader
-import com.bot.nova.component.text.TextComponent
 import com.bot.nova.utils.info
 import com.google.gson.Gson
+import com.ktx.android.sdui.SDUIComponent
 import com.ktx.android.ui.theme.OpenandroidcomposeTheme
 
 class MainActivity : ComponentActivity() {
@@ -39,10 +38,10 @@ class MainActivity : ComponentActivity() {
 @Preview
 @Composable
 fun Root(modifier: Modifier) {
-    val json = loadAssetString(LocalContext.current, "text_component.json").trimIndent()
-    val component = Gson().fromJson(json, TextComponent::class.java)
+    val json = loadAssetString(LocalContext.current, "row_component.json").trimIndent()
+    val component = Gson().fromJson(json, SDUIComponent::class.java)
     info("component: $component")
-    NovaLoader().Render(component)
+
 }
 
 private fun loadAssetString(context: Context, fileName: String): String {

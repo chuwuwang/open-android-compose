@@ -11,12 +11,12 @@ import com.bot.nova.component.getTextFont
 import com.bot.nova.utils.ColorUtil
 
 @Composable
-fun ButtonRender(component: ButtonComponent, text: String, onClick: () -> Unit) {
-    ButtonRender(component = component, text = text, onClick, null)
+fun NovaButton(component: ButtonComponent, text: String, onClick: Click) {
+    NovaButton(component, text, onClick, null)
 }
 
 @Composable
-fun ButtonRender(component: ButtonComponent, text: String, onClick: Click, onLongPressClick: Click ? = null) {
+fun NovaButton(component: ButtonComponent, text: String, onClick: Click, onLongPressClick: Click ? = null) {
     val style = component.style
     val modifier = getModifier(style).actions(
         onClick = onClick,
@@ -31,6 +31,6 @@ fun ButtonRender(component: ButtonComponent, text: String, onClick: Click, onLon
         maxLines = style.lineLimit
     }
     Button(onClick = onClick, modifier = modifier) {
-        Text(text = text, modifier = modifier, color = color, fontSize = textFont.first, fontFamily = textFont.second, textAlign = textAlign, maxLines = maxLines)
+        Text(text = text, color = color, fontSize = textFont.first, fontFamily = textFont.second, textAlign = textAlign, maxLines = maxLines)
     }
 }

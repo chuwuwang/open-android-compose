@@ -1,0 +1,55 @@
+{
+  "type": "hStack",
+  "id": "mainHStack",
+  "alignment": "center",
+  "style": {
+    "width": 100,
+    "height": 40,
+    "minWidth": null,
+    "maxWidth": null,
+    "minHeight": null,
+    "maxHeight": null,
+    "padding": {
+      "top": 20,
+      "bottom": 20,
+      "left": 15,
+      "right": 15
+    },
+    "backgroundColor": "#F8F8F8",
+    "borderRadius": 5
+  },
+  "children": [
+    {
+      "type": "text",
+      "id": "titleText",
+      "text": "Hello",
+      "style": {
+        "fontSize": 18,
+        "color": "#333333",
+        "textAlign": "left"
+      }
+    },
+    {
+      "type": "button",
+      "id": "actionButton",
+      "text": "Hello",
+      "style": {
+        "width": 100,
+        "height": 40,
+        "backgroundColor": "#007BFF",
+        "color": "#FFFFFF",
+        "borderRadius": 5
+      }
+    }
+  ],
+  "actions": [
+    {
+      "event": "onClick",
+      "target": "function://route?url=xxxxx"
+    },
+    {
+      "event": "onLongPress",
+      "target": "function://customAction?param=yyyyy"
+    }
+  ]
+}
