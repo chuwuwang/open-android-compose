@@ -9,9 +9,9 @@ import com.bot.nova.mode.NovaPadding
 data class NovaButtonComponent(
     override val id: String,
     override val type: String,
-    override var event: NovaEvent = NovaEvent(),
 
-    var text: String,
+    val text: String,
+    val event: NovaEvent = NovaEvent(),
     val style: NovaButtonComponentStyle,
     val actions: List<NovaAction> = emptyList(),
 ) : NovaComponent

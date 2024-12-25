@@ -13,16 +13,16 @@ abstract class NovaViewModel<T : NovaComponent> {
     abstract fun createComponent(): MutableState<T>
 
     @Composable
-    abstract fun Rraw(component: T)
+    abstract fun Draw(component: T)
 
     @Composable
     fun Render() {
         component = createComponent()
-        Rraw(component.value)
+        Draw(component.value)
     }
 
-    fun setEvent(event: NovaEvent) {
-        component.value.event = event
+    open fun setEvent(event: NovaEvent) {
+
     }
 
 }

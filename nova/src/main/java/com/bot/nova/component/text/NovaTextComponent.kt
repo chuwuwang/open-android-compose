@@ -9,9 +9,9 @@ import com.bot.nova.mode.NovaPadding
 data class NovaTextComponent(
     override val id: String,
     override val type: String,
-    override var event: NovaEvent = NovaEvent(),
 
     val text: String,
+    val event: NovaEvent = NovaEvent(),
     val actions: List<NovaAction> = emptyList(),
     val style: NovaTextComponentStyle = NovaTextComponentStyle(),
 ) : NovaComponent

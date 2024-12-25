@@ -1,6 +1,5 @@
 package com.bot.nova.component.row
 
-import com.bot.nova.action.NovaAction
 import com.bot.nova.action.NovaEvent
 import com.bot.nova.mode.NovaComponent
 import com.bot.nova.mode.NovaComponentStyle
@@ -9,11 +8,10 @@ import com.bot.nova.mode.NovaPadding
 data class NovaHStackComponent(
     override val id: String,
     override val type: String,
-    override var event: NovaEvent = NovaEvent(),
 
-    var alignment: String = NovaHStack.DEFAULT_ALIGNMENT,
+    val event: NovaEvent = NovaEvent(),
+    val alignment: String = NovaHStack.DEFAULT_ALIGNMENT,
     val style: NovaHStackComponentStyle = NovaHStackComponentStyle(),
-    val actions: List<NovaAction> = emptyList(),
     val children: List<NovaComponent> = emptyList(),
 ) : NovaComponent
 

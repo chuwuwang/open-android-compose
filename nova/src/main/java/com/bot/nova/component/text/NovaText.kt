@@ -2,7 +2,7 @@ package com.bot.nova.component.text
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import com.bot.nova.action.actions
+import com.bot.nova.action.event
 import com.bot.nova.component.getModifier
 import com.bot.nova.component.getTextAlign
 import com.bot.nova.component.getTextFont
@@ -23,11 +23,7 @@ object NovaText {
 @Composable
 fun NovaText(component: NovaTextComponent) {
     val style = component.style
-    val modifier = getModifier(style).actions(
-        onClick = component.event.onClick,
-        onLongPressClick = component.event.onLongPressClick,
-        actions = component.actions
-    )
+    val modifier = getModifier(style).event(component.event)
     val maxLines = style.lineLimit
     val textFont = getTextFont(style.font)
     val textAlign = getTextAlign(style.textAlign)

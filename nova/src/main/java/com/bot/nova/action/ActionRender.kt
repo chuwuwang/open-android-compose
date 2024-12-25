@@ -3,26 +3,21 @@ package com.bot.nova.action
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.pointer.pointerInput
-import com.bot.nova.utils.info
 
-fun Modifier.actions(
-    onClick: Click ? ,
-    onLongPressClick: Click ? ,
-    actions: List<NovaAction> ? ,
-): Modifier {
-    var onClickUi: Click ? = null
-    var onLongPressClickUi: Click ? = null
+fun Modifier.actions(onClick: Click ? = null, onLongPressClick: Click ? = null, actions: List<NovaAction> ? = null): Modifier {
+    var preBuiltClick: Click ? = null
+    var preBuiltLongPressClick: Click ? = null
     if (actions != null) {
-        val onClickX = actions.find { it.event == "onClick" }
-        val onLongPressX = actions.find { it.event == "onLongPress" }
-        if (onClickX != null) onClickUi = {
-            info("onClickUi")
+        val click = actions.find { it.event == "onClick" }
+        val longPress = actions.find { it.event == "onLongPress" }
+        if (click != null) preBuiltClick = {
+            error("Server onClick() trigger")
         }
-        if (onLongPressX != null) onLongPressClickUi = {
-            info("onLongPressClickUi")
+        if (longPress != null) preBuiltLongPressClick = {
+            error("Server onLongPress() trigger")
         }
     }
-    if (onClick == null && onLongPressClick == null && onClickUi == null && onLongPressClickUi == null) {
+    if (onClick == null && onLongPressClick == null && preBuiltClick == null && preBuiltLongPressClick == null) {
         return this
     }
     return this then pointerInput(Unit) {

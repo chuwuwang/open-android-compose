@@ -53,6 +53,7 @@ fun Root(modifier: Modifier, novaLoader: NovaLoader) {
     val component = Gson().fromJson(json, SDUIComponent::class.java)
     info("component: $component")
     val novaComponent = SDUILoader.buildNovaComponent(component)
+
     novaLoader.Render(novaComponent)
 }
 

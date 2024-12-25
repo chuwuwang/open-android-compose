@@ -43,13 +43,6 @@
     }
   ],
   "actions": [
-    {
-      "event": "onClick",
-      "target": "function://route?url=xxxxx"
-    },
-    {
-      "event": "onLongPress",
-      "target": "function://customAction?param=yyyyy"
-    }
+
   ]
 }

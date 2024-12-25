@@ -5,6 +5,7 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import com.bot.nova.NovaViewModel
+import com.bot.nova.action.NovaEvent
 
 class NovaTextViewModel(private val nova: NovaTextComponent) : NovaViewModel<NovaTextComponent>() {
 
@@ -14,8 +15,12 @@ class NovaTextViewModel(private val nova: NovaTextComponent) : NovaViewModel<Nov
     }
 
     @Composable
-    override fun Rraw(component: NovaTextComponent) {
+    override fun Draw(component: NovaTextComponent) {
         NovaText(component)
+    }
+
+    override fun setEvent(event: NovaEvent) {
+        component.value = component.value.copy(event = event)
     }
 
     fun setText(text: String) {
