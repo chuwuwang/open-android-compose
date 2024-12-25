@@ -3,7 +3,6 @@ package com.bot.nova.component.button
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import com.bot.nova.action.Click
 import com.bot.nova.action.actions
 import com.bot.nova.component.getModifier
 import com.bot.nova.component.getTextAlign
@@ -23,16 +22,12 @@ object NovaButton {
 }
 
 @Composable
-fun NovaButton(component: NovaButtonComponent, text: String, onClick: Click) {
-    NovaButton(component, text, onClick, null)
-}
-
-@Composable
-fun NovaButton(component: NovaButtonComponent, text: String, onClick: Click, onLongPressClick: Click ? = null) {
+fun NovaButton(component: NovaButtonComponent) {
     val style = component.style
+    val event = component.event
     val modifier = getModifier(style).actions(
-        onClick = onClick,
-        onLongPressClick = onLongPressClick,
+        onClick = null,
+        onLongPressClick = event.onLongPressClick,
         actions = component.actions
     )
     val textFont = getTextFont(style.font)
@@ -42,7 +37,7 @@ fun NovaButton(component: NovaButtonComponent, text: String, onClick: Click, onL
     if (style.lineLimit != null && style.lineLimit > 0) {
         maxLines = style.lineLimit
     }
-    Button(onClick = onClick, modifier = modifier) {
-        Text(text = text, color = color, fontSize = textFont.first, fontFamily = textFont.second, textAlign = textAlign, maxLines = maxLines)
+    Button(onClick = event.onClick ?: {}, modifier = modifier) {
+        Text(text = component.text, color = color, fontSize = textFont.first, fontFamily = textFont.second, textAlign = textAlign, maxLines = maxLines)
     }
 }

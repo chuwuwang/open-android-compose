@@ -1,6 +1,7 @@
 package com.bot.nova.component.button
 
 import com.bot.nova.action.NovaAction
+import com.bot.nova.action.NovaEvent
 import com.bot.nova.mode.NovaComponent
 import com.bot.nova.mode.NovaComponentStyle
 import com.bot.nova.mode.NovaPadding
@@ -8,6 +9,7 @@ import com.bot.nova.mode.NovaPadding
 data class NovaButtonComponent(
     override val id: String,
     override val type: String,
+    override var event: NovaEvent = NovaEvent(),
 
     var text: String,
     val style: NovaButtonComponentStyle,
