@@ -1,7 +1,7 @@
 package com.bot.nova.component.row
 
 import com.bot.nova.action.NovaAction
-import com.bot.nova.component.button.ButtonComponentStyle
+import com.bot.nova.component.button.NovaButtonComponentStyle
 import com.bot.nova.mode.NovaComponent
 import com.bot.nova.mode.NovaComponentStyle
 import com.bot.nova.mode.NovaPadding
@@ -11,7 +11,7 @@ data class HStackComponent(
     override val type: String,
 
     var alignment: String,
-    val style: ButtonComponentStyle,
+    val style: NovaButtonComponentStyle,
     val actions: List<NovaAction> ? = null,
     val children: List<NovaComponent> = emptyList(),
 ) : NovaComponent

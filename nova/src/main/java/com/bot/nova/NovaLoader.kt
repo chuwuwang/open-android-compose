@@ -1,7 +1,7 @@
 package com.bot.nova
 
 import androidx.compose.runtime.Composable
-import com.bot.nova.component.button.ButtonComponent
+import com.bot.nova.component.button.NovaButtonComponent
 import com.bot.nova.component.button.NovaButton
 import com.bot.nova.component.row.HStackComponent
 import com.bot.nova.component.row.NovaHStack
@@ -30,7 +30,7 @@ class NovaLoader {
             NovaText(textComponent, textComponent.text)
             viewModels[textComponent.id] = TextComponentViewModel(textComponent)
         } else if (type == ComponentType.BUTTON.value) {
-            val cmp = component as ButtonComponent
+            val cmp = component as NovaButtonComponent
             NovaButton(cmp, cmp.text) { }
         }
         // container

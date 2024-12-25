@@ -10,13 +10,25 @@ import com.bot.nova.component.getTextAlign
 import com.bot.nova.component.getTextFont
 import com.bot.nova.utils.ColorUtil
 
+object NovaButton {
+
+    const val DEFAULT_FONT = "medium"
+
+    const val DEFAULT_FONT_COLOR = "#222222"
+
+    const val DEFAULT_BACKGROUND_COLOR = "#FFFFFF"
+
+    const val DEFAULT_TEXT_ALIGN = "#leading"
+
+}
+
 @Composable
-fun NovaButton(component: ButtonComponent, text: String, onClick: Click) {
+fun NovaButton(component: NovaButtonComponent, text: String, onClick: Click) {
     NovaButton(component, text, onClick, null)
 }
 
 @Composable
-fun NovaButton(component: ButtonComponent, text: String, onClick: Click, onLongPressClick: Click ? = null) {
+fun NovaButton(component: NovaButtonComponent, text: String, onClick: Click, onLongPressClick: Click ? = null) {
     val style = component.style
     val modifier = getModifier(style).actions(
         onClick = onClick,
