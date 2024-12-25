@@ -3,8 +3,8 @@
   "id": "mainHStack",
   "alignment": "center",
   "style": {
-    "width": 100,
-    "height": 40,
+    "width": 600,
+    "height": 300,
     "minWidth": null,
     "maxWidth": null,
     "minHeight": null,
@@ -15,7 +15,7 @@
       "left": 15,
       "right": 15
     },
-    "backgroundColor": "#F8F8F8",
+    "backgroundColor": "#7F0F6B",
     "borderRadius": 5
   },
   "children": [
@@ -26,7 +26,14 @@
       "style": {
         "fontSize": 18,
         "color": "#333333",
-        "textAlign": "left"
+        "textAlign": "left",
+        "backgroundColor": "#CCCCCC",
+        "padding": {
+          "top": 20,
+          "bottom": 20,
+          "left": 15,
+          "right": 15
+        }
       }
     },
     {
@@ -43,6 +50,13 @@
     }
   ],
   "actions": [
-
+    {
+      "event": "onClick",
+      "target": "function://route?url=xxxxx"
+    },
+    {
+      "event": "onLongPress",
+      "target": "function://customAction?param=yyyyy"
+    }
   ]
 }

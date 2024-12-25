@@ -1,8 +1,12 @@
 package com.bot.nova.action
 
-import androidx.compose.ui.geometry.Offset
+import android.content.Context
+import android.widget.Toast
 
-data class NovaAction(
-    val event: String,
-    val target: String,
-)
+object NovaAction {
+
+    fun showToast(context: Context, message: String) {
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+    }
+
+}

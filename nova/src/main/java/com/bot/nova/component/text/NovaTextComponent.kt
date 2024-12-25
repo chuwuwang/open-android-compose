@@ -1,6 +1,5 @@
 package com.bot.nova.component.text
 
-import com.bot.nova.action.NovaAction
 import com.bot.nova.action.NovaEvent
 import com.bot.nova.mode.NovaComponent
 import com.bot.nova.mode.NovaComponentStyle
@@ -12,7 +11,6 @@ data class NovaTextComponent(
 
     val text: String,
     val event: NovaEvent = NovaEvent(),
-    val actions: List<NovaAction> = emptyList(),
     val style: NovaTextComponentStyle = NovaTextComponentStyle(),
 ) : NovaComponent
 

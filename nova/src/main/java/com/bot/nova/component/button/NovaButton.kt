@@ -23,8 +23,10 @@ object NovaButton {
 
 @Composable
 fun NovaButton(component: NovaButtonComponent) {
-    val clickList = component.event.onClick
-    component.event.onClick = emptyList()
+    var onClick: () -> Unit = { }
+    val click = component.event.onClick
+    if (click != null) onClick = click
+    component.event.onClick = null
     val style = component.style
     val modifier = getModifier(style).event(component.event)
     val textFont = getTextFont(style.font)
@@ -34,7 +36,7 @@ fun NovaButton(component: NovaButtonComponent) {
     if (style.lineLimit != null && style.lineLimit > 0) {
         maxLines = style.lineLimit
     }
-    Button(onClick = { clickList.forEach { it.invoke() } }, modifier = modifier) {
+    Button(onClick = { onClick.invoke() }, modifier = modifier) {
         Text(text = component.text, color = color, fontSize = textFont.first, fontFamily = textFont.second, textAlign = textAlign, maxLines = maxLines)
     }
 }

@@ -13,7 +13,6 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import com.bot.nova.NovaLoader
 import com.bot.nova.utils.info
 import com.google.gson.Gson
 import com.ktx.android.sdui.SDUIComponent
@@ -22,7 +21,7 @@ import com.ktx.android.ui.theme.OpenandroidcomposeTheme
 
 class MainActivity : ComponentActivity() {
 
-    private val novaLoader = NovaLoader()
+    private val loader = SDUILoader()
 
     override fun onCreate(savedInstanceState: Bundle ? ) {
         super.onCreate(savedInstanceState)
@@ -32,14 +31,15 @@ class MainActivity : ComponentActivity() {
                 var modifier = Modifier.fillMaxSize()
                 Scaffold(modifier) { innerPadding ->
                     modifier = Modifier.padding(innerPadding)
-                    Root(modifier, novaLoader)
+                    Root(modifier, loader)
                     Handler().postDelayed(
                         {
-                            novaLoader.setEvent("actionButton") {
+                            loader.setEvent("actionButton") {
                                 Toast.makeText(this, "Button clicked", Toast.LENGTH_SHORT).show()
                             }
-                            novaLoader.setText("titleText", "Hello, Android!")
-                        }, 3000)
+                            loader.setText("titleText", "Hello, Android!")
+                        }, 3000
+                    )
                 }
             }
         }
@@ -48,13 +48,12 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Root(modifier: Modifier, novaLoader: NovaLoader) {
+fun Root(modifier: Modifier, loader: SDUILoader) {
     val json = loadAssetString(LocalContext.current, "row_component.json").trimIndent()
     val component = Gson().fromJson(json, SDUIComponent::class.java)
     info("component: $component")
-    val novaComponent = SDUILoader.buildNovaComponent(component)
 
-    novaLoader.Render(novaComponent)
+    loader.Render(component)
 }
 
 private fun loadAssetString(context: Context, fileName: String): String {

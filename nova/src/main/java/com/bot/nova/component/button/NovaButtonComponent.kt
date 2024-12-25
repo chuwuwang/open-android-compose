@@ -1,6 +1,5 @@
 package com.bot.nova.component.button
 
-import com.bot.nova.action.NovaAction
 import com.bot.nova.action.NovaEvent
 import com.bot.nova.mode.NovaComponent
 import com.bot.nova.mode.NovaComponentStyle
@@ -13,7 +12,6 @@ data class NovaButtonComponent(
     val text: String,
     val event: NovaEvent = NovaEvent(),
     val style: NovaButtonComponentStyle,
-    val actions: List<NovaAction> = emptyList(),
 ) : NovaComponent
 
 data class NovaButtonComponentStyle(

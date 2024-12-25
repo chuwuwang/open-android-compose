@@ -1,15 +1,27 @@
 package com.ktx.android.sdui
 
+import android.content.Context
 import com.bot.nova.action.NovaAction
+import com.bot.nova.action.NovaEvent
 import com.bot.nova.mode.NovaPadding
 
 object SDUIUtil {
 
-    fun buildNovaAction(actions: List<SDUIAction> ? ): List<NovaAction> {
-        if (actions == null) {
-            return mutableListOf()
+    fun buildNovaAction(context: Context, actions: List<SDUIAction> ? ): NovaEvent {
+        if (actions == null || actions.size == 0) {
+            return NovaEvent()
         }
-        return actions.map { NovaAction(event = it.event, target = it.target ?: "") }
+        val event = NovaEvent()
+        actions.forEach {
+            if (it.event == "onClick") {
+                event.onClick = { NovaAction.showToast(context, "S D U I 预") }
+            } else if (it.event == "onLongPress") {
+
+            } else if (it.event == "onChange") {
+
+            }
+        }
+        return event
     }
 
     fun buildNovaPadding(padding: SDUIPadding ? ): NovaPadding {
