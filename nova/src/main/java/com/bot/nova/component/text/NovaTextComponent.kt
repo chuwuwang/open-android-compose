@@ -23,10 +23,10 @@ data class NovaTextComponentStyle(
     override val maxHeight: Int ? = null,
     override val padding: NovaPadding = NovaPadding(),
     override val borderRadius: Int = 0,
-    override val backgroundColor: String = "#FFFFFF",
+    override val backgroundColor: String = NovaText.DEFAULT_BACKGROUND_COLOR,
 
-    val font: String = "medium",
-    val color: String = "#222222",
-    val textAlign: String = "leading",
+    val font: String = NovaText.DEFAULT_FONT,
+    val color: String = NovaText.DEFAULT_FONT_COLOR,
+    val textAlign: String = NovaText.DEFAULT_TEXT_ALIGN,
     val lineLimit: Int = Int.MAX_VALUE,
 ) : NovaComponentStyle

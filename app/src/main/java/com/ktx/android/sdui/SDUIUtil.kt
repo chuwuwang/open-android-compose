@@ -5,10 +5,6 @@ import com.bot.nova.mode.NovaPadding
 
 object SDUIUtil {
 
-    const val DEFAULT_FONT = "medium"
-    const val DEFAULT_FONT_COLOR = "#FFFFFF"
-    const val DEFAULT_BACKGROUND_COLOR = "#FFFFFF"
-
     fun buildNovaAction(actions: List<SDUIAction> ? ): List<NovaAction> {
         if (actions == null) {
             return mutableListOf()
