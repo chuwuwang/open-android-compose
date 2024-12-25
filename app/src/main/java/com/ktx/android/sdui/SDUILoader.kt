@@ -3,6 +3,9 @@ package com.ktx.android.sdui
 import com.bot.nova.component.button.NovaButton
 import com.bot.nova.component.button.NovaButtonComponent
 import com.bot.nova.component.button.NovaButtonComponentStyle
+import com.bot.nova.component.row.NovaHStack
+import com.bot.nova.component.row.NovaHStackComponent
+import com.bot.nova.component.row.NovaHStackComponentStyle
 import com.bot.nova.component.text.NovaText
 import com.bot.nova.component.text.NovaTextComponent
 import com.bot.nova.component.text.NovaTextComponentStyle
@@ -17,6 +20,10 @@ object SDUILoader {
         } else if (type == "button") {
             return buildNovaButtonComponent(component)
         }
+        else if (type == "hStack") {
+            return buildNovaHStackComponent(component)
+        }
+        throw IllegalArgumentException("Unsupported component type: $type")
     }
 
     private fun buildNovaTextComponent(component: SDUIComponent): NovaTextComponent {
@@ -36,7 +43,14 @@ object SDUILoader {
         } else {
             NovaTextComponentStyle()
         }
-        return NovaTextComponent(id = component.id, type = component.type, text = component.text ?: "", actions = SDUIUtil.buildNovaAction(component.actions), style = textStyle)
+        val actions = SDUIUtil.buildNovaAction(component.actions)
+        return NovaTextComponent(
+            id = component.id,
+            type = component.type,
+            style = textStyle,
+            actions = actions,
+            text = component.text ?: ""
+        )
     }
 
     private fun buildNovaButtonComponent(component: SDUIComponent): NovaButtonComponent {
@@ -56,7 +70,44 @@ object SDUILoader {
         } else {
             NovaButtonComponentStyle()
         }
-        return NovaButtonComponent(id = component.id, type = component.type, text = component.text ?: "", actions = SDUIUtil.buildNovaAction(component.actions), style = buttonStyle)
+        val actions = SDUIUtil.buildNovaAction(component.actions)
+        return NovaButtonComponent(
+            id = component.id,
+            type = component.type,
+            style = buttonStyle,
+            actions = actions,
+            text = component.text ?: ""
+        )
+    }
+
+    private fun buildNovaHStackComponent(component: SDUIComponent): NovaHStackComponent {
+        val style = component.style
+        val hStackStyle = if (style != null) {
+            NovaHStackComponentStyle(
+                width = style.width,
+                height = style.height,
+                padding = SDUIUtil.buildNovaPadding(style.padding),
+                borderRadius = style.borderRadius ?: 0,
+                backgroundColor = style.backgroundColor ?: NovaHStack.DEFAULT_BACKGROUND_COLOR,
+            )
+        } else {
+            NovaHStackComponentStyle()
+        }
+        val actions = SDUIUtil.buildNovaAction(component.actions)
+        val alignment = component.alignment ?: NovaHStack.DEFAULT_ALIGNMENT
+        val children = if (component.children != null) {
+            component.children.map { buildNovaComponent(it) }
+        } else {
+            emptyList()
+        }
+        return NovaHStackComponent(
+            id = component.id,
+            type = component.type,
+            actions = actions,
+            style = hStackStyle,
+            alignment = alignment,
+            children = children
+        )
     }
 
 }

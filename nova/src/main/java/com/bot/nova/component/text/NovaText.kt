@@ -17,7 +17,7 @@ object NovaText {
 
     const val DEFAULT_BACKGROUND_COLOR = "#FFFFFF"
 
-    const val DEFAULT_TEXT_ALIGN = "#leading"
+    const val DEFAULT_TEXT_ALIGN = "leading"
 
 }
 

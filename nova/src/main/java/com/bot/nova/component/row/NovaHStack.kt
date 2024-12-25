@@ -8,8 +8,21 @@ import com.bot.nova.action.actions
 import com.bot.nova.component.getHorizontalAlignment
 import com.bot.nova.component.getModifier
 
+object NovaHStack  {
+
+    const val DEFAULT_BACKGROUND_COLOR = "#FFFFFF"
+
+    const val DEFAULT_ALIGNMENT = "leading"
+
+}
+
 @Composable
-fun NovaHStack(component: HStackComponent, onClick: Click ? = null, onLongPressClick: Click ? = null, content: @Composable RowScope.() -> Unit) {
+fun NovaHStack(component: NovaHStackComponent, onClick: Click ? = null, content: @Composable RowScope.() -> Unit) {
+    NovaHStack(component, onClick, null, content)
+}
+
+@Composable
+fun NovaHStack(component: NovaHStackComponent, onClick: Click ? = null, onLongPressClick: Click ? = null, content: @Composable RowScope.() -> Unit) {
     val style = component.style
     val modifier = getModifier(style).actions(
         onClick = onClick,
