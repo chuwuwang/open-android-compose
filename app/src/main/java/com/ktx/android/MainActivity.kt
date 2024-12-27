@@ -34,8 +34,8 @@ class MainActivity : ComponentActivity() {
                     Root(modifier, loader)
                     Handler().postDelayed(
                         {
-                            loader.setEvent("actionButton") {
-                                Toast.makeText(this, "Button clicked", Toast.LENGTH_SHORT).show()
+                            loader.setEvent("actionButton"){
+                                BBF.xx()
                             }
                             loader.setText("titleText", "Hello, Android!")
                         }, 3000

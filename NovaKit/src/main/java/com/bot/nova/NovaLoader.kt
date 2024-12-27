@@ -4,8 +4,8 @@ import androidx.compose.runtime.Composable
 import com.bot.nova.action.NovaEvent
 import com.bot.nova.component.button.NovaButtonComponent
 import com.bot.nova.component.button.NovaButtonViewModel
-import com.bot.nova.component.row.NovaHStack
 import com.bot.nova.component.row.NovaHStackComponent
+import com.bot.nova.component.row.NovaHStackViewModel
 import com.bot.nova.component.text.NovaTextComponent
 import com.bot.nova.component.text.NovaTextViewModel
 import com.bot.nova.mode.ComponentType
@@ -34,8 +34,9 @@ class NovaLoader {
         }
         // container
         else if (type == ComponentType.HORIZONTAL.value) {
-            val cmp = component as NovaHStackComponent
-            NovaHStack(cmp) { Render(cmp.children) }
+            val hStackComponent = component as NovaHStackComponent
+            val viewModel = NovaHStackViewModel(hStackComponent) { Render(hStackComponent.children) }.apply { Render() }
+            viewModels[hStackComponent.id] = viewModel
         }
     }
 

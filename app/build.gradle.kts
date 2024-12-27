@@ -37,7 +37,7 @@ android {
 }
 
 dependencies {
-    implementation( project(":nova") )
+    implementation(project(":NovaKit"))
     // https://mvnrepository.com/artifact/com.google.code.gson/gson
     implementation("com.google.code.gson:gson:2.11.0")
     implementation("androidx.multidex:multidex:2.0.1")

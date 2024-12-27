@@ -20,4 +20,4 @@ dependencyResolutionManagement {
 }
 
 include(":app")
-include(":nova")
+include(":NovaKit")
