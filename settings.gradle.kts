@@ -25,3 +25,4 @@ include(":app")
 
 include(":SDKit")
 include(":NovaKit")
+include(":BBFunction")
