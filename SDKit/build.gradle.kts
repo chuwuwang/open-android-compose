@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.bot.nova"
+    namespace = "com.bot.sdui"
     compileSdk = 34
     defaultConfig {
         minSdk = 24
@@ -34,13 +34,5 @@ android {
 }
 
 dependencies {
-    api(libs.androidx.core.ktx)
-    api(libs.androidx.material3)
-    api(libs.androidx.lifecycle.runtime.ktx)
-
-    api(libs.androidx.ui)
-    api(libs.androidx.ui.graphics)
-    api(libs.androidx.activity.compose)
-    api(libs.androidx.ui.tooling.preview)
-    api( platform(libs.androidx.compose.bom) )
+    implementation( project(":NovaKit") )
 }
