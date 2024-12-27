@@ -7,7 +7,7 @@ import androidx.compose.runtime.remember
 import com.bot.nova.NovaViewModel
 import com.bot.nova.action.NovaEvent
 
-class NovaTextViewModel(private val nova: NovaTextComponent ) : NovaViewModel<NovaTextComponent>() {
+class NovaTextViewModel(private val nova: NovaTextComponent) : NovaViewModel<NovaTextComponent>() {
 
     @Composable
     override fun createComponent(): MutableState<NovaTextComponent> {
@@ -25,6 +25,10 @@ class NovaTextViewModel(private val nova: NovaTextComponent ) : NovaViewModel<No
 
     fun setText(text: String) {
         component.value = component.value.copy(text = text)
+    }
+
+    fun getText(): String {
+        return component.value.text
     }
 
 }

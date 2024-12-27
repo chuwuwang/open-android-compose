@@ -1,16 +1,19 @@
 package com.bot.nova.component.text
 
 import com.bot.nova.action.NovaEvent
+import com.bot.nova.mode.ComponentType
 import com.bot.nova.mode.NovaComponent
 import com.bot.nova.mode.NovaComponentStyle
+import com.bot.nova.mode.NovaMargin
 import com.bot.nova.mode.NovaPadding
+import java.util.UUID
 
 data class NovaTextComponent(
-    override val id: String,
-    override val type: String,
+    override val id: String = UUID.randomUUID().toString(),
+    override val type: String = ComponentType.TEXT.value,
+    override val event: NovaEvent = NovaEvent(),
 
     val text: String,
-    val event: NovaEvent = NovaEvent(),
     val style: NovaTextComponentStyle = NovaTextComponentStyle(),
 ) : NovaComponent
 
@@ -21,6 +24,7 @@ data class NovaTextComponentStyle(
     override val maxWidth: Int ? = null,
     override val minHeight: Int ? = null,
     override val maxHeight: Int ? = null,
+    override val margin: NovaMargin = NovaMargin(),
     override val padding: NovaPadding = NovaPadding(),
     override val borderRadius: Int = 0,
     override val backgroundColor: String = NovaText.DEFAULT_BACKGROUND_COLOR,

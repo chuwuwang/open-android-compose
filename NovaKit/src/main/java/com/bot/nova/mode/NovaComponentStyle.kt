@@ -9,6 +9,7 @@ interface NovaComponentStyle {
     val minHeight: Int ?
     val maxHeight: Int ?
 
+    val margin: NovaMargin
     val padding: NovaPadding
     val borderRadius: Int
     val backgroundColor: String

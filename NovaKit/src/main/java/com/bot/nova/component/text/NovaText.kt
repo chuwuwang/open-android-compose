@@ -21,6 +21,12 @@ object NovaText {
 }
 
 @Composable
+fun NovaText(text: String) {
+    val component = NovaTextComponent(text = text)
+    NovaText(component)
+}
+
+@Composable
 fun NovaText(component: NovaTextComponent) {
     val style = component.style
     val modifier = getModifier(style).event(component.event)

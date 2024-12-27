@@ -4,9 +4,10 @@ import com.bot.nova.action.NovaEvent
 import com.bot.nova.mode.NovaComponent
 import com.bot.nova.mode.NovaComponentStyle
 import com.bot.nova.mode.NovaPadding
+import java.util.UUID
 
 data class NovaHStackComponent(
-    override val id: String,
+    override val id: String = UUID.randomUUID().toString(),
     override val type: String,
 
     val event: NovaEvent = NovaEvent(),

@@ -9,6 +9,9 @@ abstract class NovaViewModel<T : NovaComponent> {
 
     lateinit var component: MutableState<T>
 
+    val event: NovaEvent
+        get() = component.value.event
+
     @Composable
     abstract fun createComponent(): MutableState<T>
 

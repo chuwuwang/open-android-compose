@@ -40,6 +40,14 @@ class NovaLoader {
         }
     }
 
+    fun setOnClickListener(id: String, onClick: () -> Unit) {
+        val viewModel = viewModels[id]
+        if (viewModel != null) {
+            val event = viewModel.event.copy(onClick = onClick)
+            viewModel.setEvent(event)
+        }
+    }
+
     fun setEvent(id: String, onClick: () -> Unit) {
         val viewModel = viewModels[id]
         if (viewModel != null) {

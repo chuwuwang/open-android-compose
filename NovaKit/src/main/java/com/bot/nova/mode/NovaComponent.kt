@@ -1,14 +1,13 @@
 package com.bot.nova.mode
 
+import com.bot.nova.action.NovaEvent
+
 interface NovaComponent {
 
     val id: String
+
     val type: String
 
-    val callback: Callback?
+    val event: NovaEvent
 
 }
-
-data class Callback(
-    val xxx: ()->Unit,
-)
