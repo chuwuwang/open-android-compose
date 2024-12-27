@@ -6,10 +6,11 @@ enum class ComponentType(val value: String) {
     INPUT("input"),
     IMAGE("image"),
     BUTTON("button"),
+    SPACER("spacer"),
 
-    STACK("zStack"),
-    Vertical("vStack"),
-    HORIZONTAL("hStack"),
+    ROW("hStack"),
+    BOX("zStack"),
+    Column("vStack"),
     SCROLLVIEW("scrollView"),
 
 }

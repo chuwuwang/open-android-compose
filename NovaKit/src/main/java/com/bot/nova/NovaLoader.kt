@@ -33,7 +33,7 @@ class NovaLoader {
             viewModels[buttonComponent.id] = NovaButtonViewModel(buttonComponent).apply { Render() }
         }
         // container
-        else if (type == ComponentType.HORIZONTAL.value) {
+        else if (type == ComponentType.ROW.value) {
             val hStackComponent = component as NovaHStackComponent
             val viewModel = NovaHStackViewModel(hStackComponent) { Render(hStackComponent.children) }.apply { Render() }
             viewModels[hStackComponent.id] = viewModel

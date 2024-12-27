@@ -83,15 +83,5 @@ fun getHorizontalAlignment(alignment: String): Arrangement.Horizontal {
     return Arrangement.Start
 }
 
-fun getTextAlign(align: String): TextAlign {
-    if (align == TextAlignment.CENTER.value) {
-        return TextAlign.Center
-    } else if (align == TextAlignment.END.value) {
-        return TextAlign.End
-    }
-    return TextAlign.Start
-}
 
-fun getTextFont(font: String): Pair<TextUnit, FontFamily> {
-    return Pair(16.sp, FontFamily.Default)
-}
+
