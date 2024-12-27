@@ -7,14 +7,18 @@ import com.bot.nova.mode.NovaPadding
 
 object SDUIUtil {
 
-    fun buildNovaAction(context: Context, actions: List<SDUIAction> ? ): NovaEvent {
+    fun buildNovaAction(context: Context, actions: List<SDUIAction> ?
+    ): NovaEvent {
         if (actions == null || actions.size == 0) {
             return NovaEvent()
         }
         val event = NovaEvent()
         actions.forEach {
             if (it.event == "onClick") {
-                event.onClick = { NovaAction.showToast(context, "S D U I 预") }
+                event.onClick = { xx ->
+                    xx.event
+                    val action = NovaAction(event = it.event, target = it.target, track = it.track)
+                }
             } else if (it.event == "onLongPress") {
 
             } else if (it.event == "onChange") {

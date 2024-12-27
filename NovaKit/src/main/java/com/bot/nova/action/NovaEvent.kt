@@ -6,20 +6,22 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.input.pointer.pointerInput
 import com.bot.nova.utils.info
 
+typealias XXX = ( NovaAction ? ) -> Unit
+
 typealias Click = () -> Unit
 
 typealias ComposeClick = (Offset) -> Unit
 
 data class NovaEvent(
-//    var onClick: List<Click> = emptyList(),
-//    var onDoubleClick: List<Click> = emptyList(),
-//    var onLongPressClick: List<Click> = emptyList(),
-    var onClick: Click ? = null,
+    var onClick: XXX ? = null,
     var onDoubleClick: Click ? = null,
-    var onLongPressClick: Click ? = null,
+    var onLongPress: Click ? = null,
+    var onChange: Click ? = null,
+    var onAppear: Click ? = null,
+    var onDisappear: Click ? = null,
 )
 
-fun Modifier.event(event: NovaEvent): Modifier {
+fun Modifier.event(action: List<NovaAction>, event: NovaEvent): Modifier {
 //    val check = event.onClick.isEmpty() && event.onDoubleClick.isEmpty() && event.onLongPressClick.isEmpty()
 //    if (check) {
 //        return this
@@ -33,7 +35,7 @@ fun Modifier.event(event: NovaEvent): Modifier {
 //    }
     val onClick = event.onClick
     val onDoubleClick = event.onDoubleClick
-    val onLongPressClick = event.onLongPressClick
+    val onLongPressClick = event.onLongPress
     if (onClick == null && onDoubleClick == null && onLongPressClick == null) {
         return this
     }
