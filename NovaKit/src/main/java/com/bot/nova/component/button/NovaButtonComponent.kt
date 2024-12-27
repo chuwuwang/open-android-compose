@@ -1,17 +1,20 @@
 package com.bot.nova.component.button
 
 import com.bot.nova.action.NovaEvent
+import com.bot.nova.mode.ComponentType
 import com.bot.nova.mode.NovaComponent
 import com.bot.nova.mode.NovaComponentStyle
+import com.bot.nova.mode.NovaMargin
 import com.bot.nova.mode.NovaPadding
+import java.util.UUID
 
 data class NovaButtonComponent(
-    override val id: String,
-    override val type: String,
+    override val id: String = UUID.randomUUID().toString(),
+    override val type: String = ComponentType.BUTTON.value,
+    override val event: NovaEvent = NovaEvent(),
 
     val text: String,
-    val event: NovaEvent = NovaEvent(),
-    val style: NovaButtonComponentStyle,
+    val style: NovaButtonComponentStyle = NovaButtonComponentStyle(),
 ) : NovaComponent
 
 data class NovaButtonComponentStyle(
@@ -21,6 +24,7 @@ data class NovaButtonComponentStyle(
     override val maxWidth: Int ? = null,
     override val minHeight: Int ? = null,
     override val maxHeight: Int ? = null,
+    override val margin: NovaMargin = NovaMargin(),
     override val padding: NovaPadding = NovaPadding(),
     override val borderRadius: Int = 0,
     override val backgroundColor: String = NovaButton.DEFAULT_BACKGROUND_COLOR,

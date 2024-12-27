@@ -27,4 +27,8 @@ class NovaButtonViewModel(private val nova: NovaButtonComponent) : NovaViewModel
         component.value = component.value.copy(text = text)
     }
 
+    fun getText(): String {
+        return component.value.text
+    }
+
 }
