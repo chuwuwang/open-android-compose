@@ -11,14 +11,9 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.bot.nova.mode.NovaComponentStyle
-import com.bot.nova.mode.TextAlignment
 import com.bot.nova.utils.ColorUtil
 
 private const val FULL_WIDTH = -1
@@ -82,6 +77,3 @@ fun getHorizontalAlignment(alignment: String): Arrangement.Horizontal {
     }
     return Arrangement.Start
 }
-
-
-

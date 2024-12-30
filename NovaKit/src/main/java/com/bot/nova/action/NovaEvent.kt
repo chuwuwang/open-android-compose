@@ -6,14 +6,12 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.input.pointer.pointerInput
 import com.bot.nova.utils.info
 
-typealias XXX = ( NovaAction ? ) -> Unit
-
 typealias Click = () -> Unit
 
 typealias ComposeClick = (Offset) -> Unit
 
 data class NovaEvent(
-    var onClick: XXX ? = null,
+    var onClick: Click ? = null,
     var onDoubleClick: Click ? = null,
     var onLongPress: Click ? = null,
     var onChange: Click ? = null,
@@ -21,18 +19,7 @@ data class NovaEvent(
     var onDisappear: Click ? = null,
 )
 
-fun Modifier.event(action: List<NovaAction>, event: NovaEvent): Modifier {
-//    val check = event.onClick.isEmpty() && event.onDoubleClick.isEmpty() && event.onLongPressClick.isEmpty()
-//    if (check) {
-//        return this
-//    }
-//    return this then pointerInput(Unit) {
-//        detectTapGestures(
-//            onTap = { event.onClick.forEach { it.invoke() } },
-//            onDoubleTap = { event.onDoubleClick.forEach { it.invoke() } },
-//            onLongPress = { event.onLongPressClick.forEach { it.invoke() } }
-//        )
-//    }
+fun Modifier.event(event: NovaEvent): Modifier {
     val onClick = event.onClick
     val onDoubleClick = event.onDoubleClick
     val onLongPressClick = event.onLongPress

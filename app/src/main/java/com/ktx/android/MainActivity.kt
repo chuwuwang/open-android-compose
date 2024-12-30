@@ -13,7 +13,6 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import com.bot.nova.utils.info
 import com.google.gson.Gson
 import com.ktx.android.sdui.SDUIComponent
 import com.ktx.android.sdui.SDUILoader
@@ -34,8 +33,8 @@ class MainActivity : ComponentActivity() {
                     Root(modifier, loader)
                     Handler().postDelayed(
                         {
-                            loader.setEvent("actionButton"){
-                                BBF.xx()
+                            loader.setEvent("actionButton") {
+                                Toast.makeText(this, "Hello, Android!", Toast.LENGTH_SHORT).show()
                             }
                             loader.setText("titleText", "Hello, Android!")
                         }, 3000
@@ -51,7 +50,6 @@ class MainActivity : ComponentActivity() {
 fun Root(modifier: Modifier, loader: SDUILoader) {
     val json = loadAssetString(LocalContext.current, "row_component.json").trimIndent()
     val component = Gson().fromJson(json, SDUIComponent::class.java)
-    info("component: $component")
 
     loader.Render(component)
 }

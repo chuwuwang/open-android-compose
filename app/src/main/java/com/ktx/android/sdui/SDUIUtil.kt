@@ -1,7 +1,6 @@
 package com.ktx.android.sdui
 
 import android.content.Context
-import com.bot.nova.action.NovaAction
 import com.bot.nova.action.NovaEvent
 import com.bot.nova.mode.NovaPadding
 
@@ -15,10 +14,7 @@ object SDUIUtil {
         val event = NovaEvent()
         actions.forEach {
             if (it.event == "onClick") {
-                event.onClick = { xx ->
-                    xx.event
-                    val action = NovaAction(event = it.event, target = it.target, track = it.track)
-                }
+
             } else if (it.event == "onLongPress") {
 
             } else if (it.event == "onChange") {
