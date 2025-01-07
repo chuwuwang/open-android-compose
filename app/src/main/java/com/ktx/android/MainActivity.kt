@@ -13,6 +13,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import com.bot.nova.component.button.NovaButtonStyle
 import com.google.gson.Gson
 import com.ktx.android.sdui.SDUIComponent
 import com.ktx.android.sdui.SDUILoader
@@ -38,6 +39,15 @@ class MainActivity : ComponentActivity() {
                             }
                             loader.setText("titleText", "Hello, Android!")
                         }, 3000
+                    )
+                    Handler().postDelayed(
+                        {
+                          val style = loader.getStyle("actionButton")
+                            if (style != null && style is NovaButtonStyle) {
+                                loader.updateStyle("actionButton", style.copy(color = "#FF0000"))
+                            }
+                            // finish()
+                        }, 6000
                     )
                 }
             }

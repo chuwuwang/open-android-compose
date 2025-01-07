@@ -10,10 +10,11 @@ import com.bot.nova.component.text.NovaTextComponent
 import com.bot.nova.component.text.NovaTextViewModel
 import com.bot.nova.mode.ComponentType
 import com.bot.nova.mode.NovaComponent
+import com.bot.nova.mode.NovaStyle
 
 class NovaLoader {
 
-    private val viewModels = HashMap< String, NovaViewModel<*> >()
+    private val viewModels = HashMap<String, NovaViewModel<*, NovaStyle>>()
 
     @Composable
     fun Render(components: List<NovaComponent>) {
@@ -40,20 +41,27 @@ class NovaLoader {
         }
     }
 
-    fun setOnClickListener(id: String, onClick: () -> Unit) {
-        val viewModel = viewModels[id]
-        if (viewModel != null) {
-            val event = viewModel.event.copy(onClick = onClick)
-            viewModel.setEvent(event)
-        }
-    }
-
     fun setEvent(id: String, onClick: () -> Unit) {
         val viewModel = viewModels[id]
         if (viewModel != null) {
             val event = NovaEvent(onClick)
             viewModel.setEvent(event)
         }
+    }
+
+    fun updateStyle(id: String, style: NovaStyle) {
+        val viewModel = viewModels[id]
+        if (viewModel != null) {
+            viewModel.updateStyle(style)
+        }
+    }
+
+    fun getStyle(id: String): NovaStyle ? {
+        val viewModel = viewModels[id]
+        if (viewModel != null) {
+            return viewModel.component.value.style
+        }
+        return null
     }
 
     fun setText(id: String, text: String) {

@@ -13,14 +13,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.bot.nova.mode.NovaComponentStyle
+import com.bot.nova.mode.NovaStyle
 import com.bot.nova.utils.ColorUtil
 
 private const val FULL_WIDTH = -1
 private const val FULL_HEIGHT = -1
 
 @Composable
-fun getModifier(style: NovaComponentStyle): Modifier {
+fun getModifier(style: NovaStyle): Modifier {
     val shape = RoundedCornerShape(style.borderRadius.dp)
     val backgroundColor = ColorUtil.parseColor(style.backgroundColor)
     val modifier = Modifier
@@ -31,6 +31,12 @@ fun getModifier(style: NovaComponentStyle): Modifier {
             bottom = style.padding.bottom.dp
         )
         .background(color = backgroundColor, shape = shape)
+        .padding(
+            top = style.padding.top.dp,
+            start = style.padding.start.dp,
+            end = style.padding.end.dp,
+            bottom = style.padding.bottom.dp
+        )
     if (style.width > 0) {
         modifier.width(style.width.dp)
     }

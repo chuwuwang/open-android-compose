@@ -4,10 +4,13 @@ import com.bot.nova.action.NovaEvent
 
 interface NovaComponent {
 
-    val id: String
+  val id: String
+  val type: String
+  val event: NovaEvent
+  val style: NovaStyle
 
-    val type: String
+  fun copyX(event: NovaEvent): NovaComponent
 
-    val event: NovaEvent
+  fun copyX(style: NovaStyle): NovaComponent
 
 }

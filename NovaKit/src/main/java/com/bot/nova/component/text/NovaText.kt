@@ -2,11 +2,13 @@ package com.bot.nova.component.text
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import com.bot.nova.action.event
 import com.bot.nova.component.getModifier
 import com.bot.nova.utils.ColorUtil
 import com.bot.nova.utils.FontUtil
 import com.bot.nova.utils.NovaUtil
+import com.bot.nova.utils.info
 
 object NovaText {
 
@@ -34,5 +36,19 @@ fun NovaText(component: NovaTextComponent) {
     val color = ColorUtil.parseColor(style.color)
     val textFont = FontUtil.getTextFont(style.font)
     val textAlign = NovaUtil.getTextAlign(style.textAlign)
+
+
+    DisposableEffect(Unit) {
+
+        info("DisposableEffect")
+
+        onDispose {
+
+            info("onDispose")
+
+        }
+
+    }
+
     Text(text = component.text, modifier = modifier, color = color, fontSize = textFont.first, fontFamily = textFont.second, textAlign = textAlign, maxLines = maxLines)
 }

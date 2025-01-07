@@ -6,9 +6,9 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import com.bot.nova.NovaViewModel
-import com.bot.nova.action.NovaEvent
+import com.bot.nova.mode.NovaStyle
 
-class NovaHStackViewModel(private val nova: NovaHStackComponent, private val content: @Composable RowScope.() -> Unit) : NovaViewModel<NovaHStackComponent>() {
+class NovaHStackViewModel(private val nova: NovaHStackComponent, private val content: @Composable RowScope.() -> Unit) : NovaViewModel<NovaHStackComponent, NovaStyle>() {
 
     @Composable
     override fun createComponent(): MutableState<NovaHStackComponent> {
@@ -18,10 +18,6 @@ class NovaHStackViewModel(private val nova: NovaHStackComponent, private val con
     @Composable
     override fun Draw(component: NovaHStackComponent) {
         NovaHStack(component, content)
-    }
-
-    override fun setEvent(event: NovaEvent) {
-        component.value = component.value.copy(event = event)
     }
 
 }

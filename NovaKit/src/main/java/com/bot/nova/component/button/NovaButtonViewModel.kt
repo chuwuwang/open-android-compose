@@ -5,9 +5,9 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import com.bot.nova.NovaViewModel
-import com.bot.nova.action.NovaEvent
+import com.bot.nova.mode.NovaStyle
 
-class NovaButtonViewModel(private val nova: NovaButtonComponent) : NovaViewModel<NovaButtonComponent>() {
+class NovaButtonViewModel(private val nova: NovaButtonComponent) : NovaViewModel<NovaButtonComponent, NovaStyle>() {
 
     @Composable
     override fun createComponent(): MutableState<NovaButtonComponent> {
@@ -17,10 +17,6 @@ class NovaButtonViewModel(private val nova: NovaButtonComponent) : NovaViewModel
     @Composable
     override fun Draw(component: NovaButtonComponent) {
         NovaButton(component)
-    }
-
-    override fun setEvent(event: NovaEvent) {
-        component.value = component.value.copy(event = event)
     }
 
     fun setText(text: String) {

@@ -3,17 +3,17 @@ package com.ktx.android.sdui
 import android.content.Context
 import com.bot.nova.component.button.NovaButton
 import com.bot.nova.component.button.NovaButtonComponent
-import com.bot.nova.component.button.NovaButtonComponentStyle
+import com.bot.nova.component.button.NovaButtonStyle
 import com.bot.nova.component.text.NovaText
 import com.bot.nova.component.text.NovaTextComponent
-import com.bot.nova.component.text.NovaTextComponentStyle
+import com.bot.nova.component.text.NovaTextStyle
 
 object SDUIComponentConverter {
 
     fun buildNovaTextComponent(context: Context, component: SDUIComponent): NovaTextComponent {
         val style = component.style
         val textStyle = if (style != null) {
-            NovaTextComponentStyle(
+            NovaTextStyle(
                 width = style.width,
                 height = style.height,
                 padding = SDUIUtil.buildNovaPadding(style.padding),
@@ -25,7 +25,7 @@ object SDUIComponentConverter {
                 lineLimit = component.style.lineLimit ?: Int.MAX_VALUE,
             )
         } else {
-            NovaTextComponentStyle()
+            NovaTextStyle()
         }
         val event = SDUIUtil.buildNovaAction(context, component.actions)
         return NovaTextComponent(id = component.id, type = component.type, event = event, style = textStyle, text = component.text ?: "")
@@ -34,7 +34,7 @@ object SDUIComponentConverter {
     fun buildNovaButtonComponent(context: Context, component: SDUIComponent): NovaButtonComponent {
         val style = component.style
         val buttonStyle = if (style != null) {
-            NovaButtonComponentStyle(
+            NovaButtonStyle(
                 width = style.width,
                 height = style.height,
                 padding = SDUIUtil.buildNovaPadding(style.padding),
@@ -46,7 +46,7 @@ object SDUIComponentConverter {
                 lineLimit = component.style.lineLimit ?: Int.MAX_VALUE,
             )
         } else {
-            NovaButtonComponentStyle()
+            NovaButtonStyle()
         }
         val event = SDUIUtil.buildNovaAction(context, component.actions)
         return NovaButtonComponent(id = component.id, type = component.type, event = event, style = buttonStyle, text = component.text ?: "")

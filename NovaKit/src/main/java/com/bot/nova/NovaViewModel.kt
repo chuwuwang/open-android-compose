@@ -4,13 +4,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import com.bot.nova.action.NovaEvent
 import com.bot.nova.mode.NovaComponent
+import com.bot.nova.mode.NovaStyle
 
-abstract class NovaViewModel<T : NovaComponent> {
+abstract class NovaViewModel<T : NovaComponent, S : NovaStyle> {
 
     lateinit var component: MutableState<T>
 
-    val event: NovaEvent
-        get() = component.value.event
+    val style: S
+        get() = component.value.style as S
 
     @Composable
     abstract fun createComponent(): MutableState<T>
@@ -21,11 +22,17 @@ abstract class NovaViewModel<T : NovaComponent> {
     @Composable
     fun Render() {
         component = createComponent()
+
         Draw(component.value)
     }
 
-    open fun setEvent(event: NovaEvent) {
-
+    fun updateStyle(style: S) {
+        component.value = component.value.copyX(style = style) as T
     }
+
+    fun setEvent(event: NovaEvent) {
+        component.value = component.value.copyX(event = event) as T
+    }
+
 
 }

@@ -3,7 +3,7 @@ package com.ktx.android.sdui
 import android.content.Context
 import com.bot.nova.component.row.NovaHStack
 import com.bot.nova.component.row.NovaHStackComponent
-import com.bot.nova.component.row.NovaHStackComponentStyle
+import com.bot.nova.component.row.NovaHStackStyle
 import com.bot.nova.mode.NovaComponent
 
 object SDUIContainerConverter {
@@ -23,7 +23,7 @@ object SDUIContainerConverter {
     private fun buildNovaHStackComponent(context: Context, component: SDUIComponent): NovaHStackComponent {
         val style = component.style
         val hStackStyle = if (style != null) {
-            NovaHStackComponentStyle(
+            NovaHStackStyle(
                 width = style.width,
                 height = style.height,
                 padding = SDUIUtil.buildNovaPadding(style.padding),
@@ -31,7 +31,7 @@ object SDUIContainerConverter {
                 backgroundColor = style.backgroundColor ?: NovaHStack.DEFAULT_BACKGROUND_COLOR,
             )
         } else {
-            NovaHStackComponentStyle()
+            NovaHStackStyle()
         }
         val alignment = component.alignment ?: NovaHStack.DEFAULT_ALIGNMENT
         val children = if (component.children != null) {
